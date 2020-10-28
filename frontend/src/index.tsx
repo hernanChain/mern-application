@@ -10,8 +10,8 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
     <Switch>
-      <Route path="/" component={VideoList}/>
-      <Route path="/new-video" component={VideoForm}/>
+      <Route exact path="/" component={VideoList}/>
+      <Route exact path="/new-video" component={VideoForm}/>
     </Switch>
     </BrowserRouter>
   </React.StrictMode>,
