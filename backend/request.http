@@ -1,0 +1,28 @@
+@api = http://localhost:3000
+
+### CREATE VIDEO
+POST {{api}}/createVideo
+Content-Type: application/json
+ 
+{
+    "url":"https://www.youtube.com/watch?v=WWUoqu4RtHV0",
+    "description": "This video is about programming art",
+    "title": "Music for programming "
+}
+
+### READ A VIDEO
+GET {{api}}/getVideo/5f9987f32c782b1b6c1eb0e1
+
+### READ ALL VIDEOS
+GET {{api}}/getVideos
+
+### UPDATE VIDEO
+PATCH  {{api}}/updateVideo/5f9987f32c782b1b6c1eb0e1
+Content-Type: application/json
+
+{
+    "title": "Hernan Chain"
+}
+
+### DELETE VIDEO
+DELETE {{api}}/deleteVideo/5f9990a45145cd17e4fed088
