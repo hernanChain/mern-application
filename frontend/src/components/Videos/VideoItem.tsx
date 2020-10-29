@@ -1,5 +1,4 @@
 import React from 'react'
-import { Interface } from 'readline'
 import { Video } from './Video'
 
 interface Props{

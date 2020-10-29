@@ -1,20 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Navbar from './components/Navbar/Navbar';
 import VideoList from './components/Videos/VideoList';
 import VideoForm from './components/Videos/VideoForm';
+import 'bootswatch/dist/pulse/bootstrap.min.css'
+import './index.css';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={VideoList}/>
-      <Route exact path="/new-video" component={VideoForm}/>
-    </Switch>
-    </BrowserRouter>
-  </React.StrictMode>,
+  
+    <React.StrictMode>
+      <BrowserRouter>
+        <Navbar></Navbar>
+        <div className="container p-4">
+        <Switch>
+          <Route exact path="/" component={VideoList} />
+          <Route exact path="/new-video" component={VideoForm} />
+        </Switch>
+        </div>
+      </BrowserRouter>
+    </React.StrictMode>
+  ,
   document.getElementById('root')
 );
 
