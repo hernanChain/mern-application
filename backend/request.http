@@ -1,4 +1,4 @@
-@api = http://localhost:3000
+@api = http://localhost:4000
 
 ### CREATE VIDEO
 POST {{api}}/createVideo
@@ -21,8 +21,8 @@ PATCH  {{api}}/updateVideo/5f9987f32c782b1b6c1eb0e1
 Content-Type: application/json
 
 {
-    "title": "Hernan Chain"
+    "title": "Hernan Gonzalez"
 }
 
 ### DELETE VIDEO
-DELETE {{api}}/deleteVideo/5f9990a45145cd17e4fed088
+DELETE {{api}}/deleteVideo/5f9f6c0abd99d716544c85ed
