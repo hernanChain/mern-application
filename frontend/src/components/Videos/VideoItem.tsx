@@ -1,7 +1,8 @@
 import React from "react";
 import { Video } from "./Video";
 import ReactPlayer from "react-player";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+import { XCircleFillIcon, PencilIcon } from "@primer/octicons-react";
 import "./VideoItem.css";
 
 interface Props {
@@ -9,20 +10,31 @@ interface Props {
 }
 
 const VideoItem = ({ video }: Props) => {
-    const history = useHistory();
+  const history = useHistory();
   return (
-    <div className="col-md-4" key={video._id}>
+    <div className="col-md-4 general-card" key={video._id} >
       <div
         className="card card-body video-card"
-        onClick={() => history.push(`/update/${video._id}`)}
       >
         <div className="d-flex justify-content-between">
-          <h1>{video.title}</h1>
-          <span className="text-danger">X</span>
+          <h3>{video.title}</h3>
+          <div className="d-flex justify-content-end">
+            <div className="edit-button" onClick={() => history.push(`/update/${video._id}`)}>
+              <PencilIcon size="small" />
+            </div>
+            <div className="close-button" onClick={() => history.push(`/delete/${video._id}`)}>
+              <XCircleFillIcon size="small" />
+            </div>
+          </div>
         </div>
-        <div className="embed-responsive embed-responsive-16by9">
-          <ReactPlayer url={video.url} />
-        </div>
+        <div className='player-wrapper'>
+        <ReactPlayer
+          className='react-player'
+          url={video.url}
+          width='100%'
+          height='100%'
+        />
+      </div>
         <p>{video.description}</p>
       </div>
     </div>

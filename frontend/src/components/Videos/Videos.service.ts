@@ -21,3 +21,8 @@ export const updateVideo = async (id:string, video:Video) =>{
     const updateVideo = await axios.patch<Video>(`${API}/updateVideo/${id}`,video)
     return updateVideo;
 }
+
+export const deleteVideo = async (id:string) =>{
+    const deleteVideo = await axios.delete<Video>(`${API}/deleteVideo/${id}`)
+    return deleteVideo;
+}

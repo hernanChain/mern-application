@@ -1,4 +1,19 @@
 .video-card:hover {
-    border: 1px solid #333;
+    border: 2px solid #1d4e89;
     cursor: pointer;
+}
+
+.video-card {
+    border-radius: 10%;
+    border-color: 2px solid tomato;
+    margin-bottom: 10px;
+}
+
+.close-button {
+    color: #CC143F;
+}
+
+.edit-button {
+    color: #1d4e89;
+    margin-right: 5px;
 }

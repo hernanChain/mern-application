@@ -10,16 +10,18 @@ interface Params {
 }
 
 const VideoForm = () => {
-  const initialState = {
-    url: "",
-    title: "",
-    description: "",
+  const initialState = () => {
+    return {
+      url: "",
+      title: "",
+      description: "",
+    };
   };
+
   const [video, setVideo] = useState<Video>(initialState);
   const [isNew, setIsNew] = useState(true);
   let history = useHistory();
   const params: Params = useParams();
-  console.log(params);
 
   const loadVideo = async (id: string) => {
     const getVideo = await videoServices.getVideo(id);
@@ -49,7 +51,7 @@ const VideoForm = () => {
       await videoServices.createVideo(video);
       await toast.success("Video Created");
     } else {
-      await videoServices.updateVideo(params.id, video)
+      await videoServices.updateVideo(params.id, video);
       await toast.success("Video Updated");
     }
     handleClick();

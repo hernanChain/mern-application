@@ -1,10 +1,16 @@
 import React, { useEffect ,useState} from 'react'
+import {useParams} from 'react-router';
 import {Video} from './Video';
 import VideoItem from './VideoItem';
 import * as videoService from './Videos.service';
 
+interface Params{
+    id:string;
+}
 const VideoList = () => {
     const [videos, setVideos] = useState<Video[]>([])
+
+    const params:Params = useParams();
 
     const loadVideos = async ()=>{
         const getVideos = await videoService.loadVideos();
@@ -18,10 +24,16 @@ const VideoList = () => {
 
         setVideos(sortedVideos)
     }
+    const deleteVideo = async (id:string)=>{
+        await videoService.deleteVideo(id);
+    }
 
     useEffect(()=>{
+        if (params.id) {
+            deleteVideo(params.id)
+          }
         loadVideos()
-    },[])
+    },[params.id])
 
     return (
         <div className="row">
