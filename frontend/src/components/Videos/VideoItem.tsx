@@ -3,14 +3,21 @@ import { Video } from "./Video";
 import ReactPlayer from "react-player";
 import { useHistory } from "react-router-dom";
 import { XCircleFillIcon, PencilIcon } from "@primer/octicons-react";
+import * as videoServices from './Videos.service';
 import "./VideoItem.css";
 
 interface Props {
   video: Video;
+  loadVideos: () => void;
 }
 
-const VideoItem = ({ video }: Props) => {
+const VideoItem = ({ video,loadVideos}: Props) => {
   const history = useHistory();
+
+  const handleDelete = async (id:string)=>{
+    await videoServices.deleteVideo(id);
+    loadVideos()
+  }
   return (
     <div className="col-md-4 general-card" key={video._id} >
       <div
@@ -22,7 +29,7 @@ const VideoItem = ({ video }: Props) => {
             <div className="edit-button" onClick={() => history.push(`/update/${video._id}`)}>
               <PencilIcon size="small" />
             </div>
-            <div className="close-button" onClick={() => history.push(`/delete/${video._id}`)}>
+            <div className="close-button" onClick={() => video._id && handleDelete(video._id)}>
               <XCircleFillIcon size="small" />
             </div>
           </div>
